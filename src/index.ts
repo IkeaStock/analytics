@@ -25,7 +25,10 @@ export class analytics {
 
         }
     }
-    update(key: string, value: string) {
-        this.db.set(key, value);
+    async update(key: string) {
+        const oldVar = await this.db.get(key)
+        const newVar = oldVar + 1
+        const res = this.db.set(key, newVar);
+        return res
     }
 }
