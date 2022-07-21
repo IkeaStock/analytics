@@ -7,8 +7,8 @@ interface IAnalyticsOptions {
     password: string;
 }
 export class analytics {
-    options: IAnalyticsOptions;
-    db: Redis;
+    private options: IAnalyticsOptions;
+    public db: Redis;
     constructor(options: IAnalyticsOptions) {
         if (options === undefined) {
             console.error('Analytics: options are required');
@@ -29,6 +29,10 @@ export class analytics {
         const oldVar = await this.db.get(key)
         const newVar = oldVar + 1
         const res = this.db.set(key, newVar);
+        return res
+    }
+    async get(key: string) {
+        const res = await this.db.get(key)
         return res
     }
 }
