@@ -1,2 +1,2 @@
-# Analytics
-Analytics engine
+# analytics
+The analytics engine for IKEA Stock.
